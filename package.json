@@ -1,0 +1,21 @@
+{
+  "name": "com.nvtt.iapscripted",
+  "version": "1.0.0",
+  "displayName": "In App Purchase Scripted",
+  "unity": "2019.1",
+  "unityRelease": "0b5",
+  "dependencies": {
+    "com.unity.purchasing": "4.7.0"
+  },
+  "keywords": [
+    "unity",
+    "inapppurchase",
+    "scripted"
+  ],
+  "author": {
+    "name": "Nguyen Van Thanh Tung",
+    "email": "tungnvt152001@gmail.com"
+  },
+  "description": "Scripted In-app Purchase to initialize Unity Services and IAP",
+  "type": "template"
+}

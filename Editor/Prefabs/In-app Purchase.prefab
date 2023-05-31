@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3159577797253571052}
+  - component: {fileID: 4180013186234387369}
   - component: {fileID: 3159577797253571053}
   - component: {fileID: 3159577797253571050}
   - component: {fileID: 3159577797253571051}
@@ -34,6 +35,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4180013186234387369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3159577797253571049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f928eabc7c654345b0c33823d69afa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3159577797253571053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,7 +79,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   iapConsumableData: {fileID: 11400000, guid: 6837d9f2db60e0640a99ff889b9db4af, type: 2}
-  consumableProductId: []
+  consumableProductId:
+  - 
 --- !u!114 &3159577797253571051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,6 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c03c81b771f36d84e9fc18fa18c2a7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  subscriptionProductsPurchased: 
   onPurchaseComplete:
     m_PersistentCalls:
       m_Calls: []

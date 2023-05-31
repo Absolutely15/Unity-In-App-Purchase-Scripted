@@ -9,9 +9,9 @@ public class IAPProductText : MonoBehaviour
 {
     #region Properties
 
-    [SerializeField] private ProductType productType;
+    [SerializeField] protected ProductType productType;
     [ValueDropdown("GetProductsID")]
-    [SerializeField] private string productId;
+    [SerializeField] protected string productId;
     [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private TextMeshProUGUI descriptionText;
     [SerializeField] private TextMeshProUGUI priceText;
@@ -33,19 +33,9 @@ public class IAPProductText : MonoBehaviour
     #endregion
 
     #region Init
-    private void Init()
+    protected virtual void Init()
     {
         product = InAppPurchaseManager.Instance.GetProduct(productId);
-        
-        if (string.IsNullOrEmpty(productId))
-        {
-            IAPUtilities.MyDebug("productId is Empty");
-        }
-
-        if (!InAppPurchaseManager.Instance.HasProductInCatalog(productId))
-        {
-            IAPUtilities.MyDebugWarning($"The product catalog has no product with the ID: {productId}");
-        }
     }
     
     private void UpdateText(Product production)

@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using NVTT.InAppPurchase;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Purchasing;
+using NVTT.InAppPurchase;
 
 public class IAPNonConsumableManager : Singleton<IAPNonConsumableManager>
 {

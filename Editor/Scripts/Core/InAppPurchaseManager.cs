@@ -6,8 +6,9 @@ using UnityEngine.Events;
 using UnityEngine.Purchasing;
 using Unity.Services.Core;
 using Unity.Services.Core.Environments;
+using NVTT.InAppPurchase;
 
-public class InAppPurchaseManager : NVTT.InAppPurchase.Singleton<InAppPurchaseManager>, IStoreListener
+public class InAppPurchaseManager : Singleton<InAppPurchaseManager>, IStoreListener
 {
     #region Properties
     public bool enableDebugLog = true;
@@ -113,13 +114,24 @@ public class InAppPurchaseManager : NVTT.InAppPurchase.Singleton<InAppPurchaseMa
         MyDebug($"Unknown product {productID}");
         return null;
     }
-
+    
     public List<Product> ProductsPurchased()
     {
         var temp = new List<Product>();
         foreach (var item in _storeController.products.all)
         {
             if (item.hasReceipt)
+                temp.Add(item);
+        }
+        return temp;
+    }
+
+    public List<Product> ProductsPurchased(ProductType productType)
+    {
+        var temp = new List<Product>();
+        foreach (var item in _storeController.products.all)
+        {
+            if (item.hasReceipt && item.definition.type == productType)
                 temp.Add(item);
         }
         return temp;

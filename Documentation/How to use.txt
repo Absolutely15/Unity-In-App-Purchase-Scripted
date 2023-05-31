@@ -1,4 +1,4 @@
-- Set up IAPCatalog (remove to untick "Automatically initialize UnityPurchasing)
+- Set up IAPCatalog (remember to untick "Automatically initialize UnityPurchasing)
 - Put In-app Purchase prefabs in preload scene
-- Add IAPProductButton to a button buy product in main scene (IAPProductText to update text when enable)
+- Add IAPProductButton to a button buy product in main scene (IAPProductText to update text when enable and IAPRestorePurchase for IOS device only)
 - Adjust 3 scripts IAPNonConsumableManager, IAPConsumableManager, IAPSubscriptionManager manually to achieve the result you want

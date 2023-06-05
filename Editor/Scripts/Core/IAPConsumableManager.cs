@@ -1,15 +1,15 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Purchasing;
 using UnityEngine.Events;
+using UnityEngine.Purchasing;
+using System.Collections.Generic;
 using NVTT.InAppPurchase;
 
 public class IAPConsumableManager : Singleton<IAPConsumableManager>
 {
     #region Properties
-    [HideInInspector] public UnityEvent<int> onPurchaseComplete = new UnityEvent<int>();
+    [HideInInspector] public UnityEvent<int> onPurchaseComplete;
     [SerializeField] private IAPConsumableData iapConsumableData;
-    [SerializeField] private List<string> consumableProductId = new List<string>();
+    [SerializeField] private List<string> consumableProductId;
 
     private readonly Dictionary<string, UnityAction> consumableDictionary = new Dictionary<string, UnityAction>();
     #endregion

@@ -4,15 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Purchasing;
+using UnityEngine.Purchasing.Extension;
 using Unity.Services.Core;
 using Unity.Services.Core.Environments;
 using NVTT.InAppPurchase;
 
-public class InAppPurchaseManager : Singleton<InAppPurchaseManager>, IStoreListener
+public class InAppPurchaseManager : Singleton<InAppPurchaseManager>, IDetailedStoreListener
 {
     #region Properties
     public bool enableDebugLog = true;
-    public UnityEvent<bool, string> onTransactionsRestored = new UnityEvent<bool, string>();
+    public UnityEvent<bool, string> onTransactionsRestored;
 
     public static bool InitializationComplete;
     
@@ -32,7 +33,7 @@ public class InAppPurchaseManager : Singleton<InAppPurchaseManager>, IStoreListe
         {
             var options = new InitializationOptions()
 #if UNITY_EDITOR
-                .SetEnvironmentName("test");
+            .SetEnvironmentName("test");
 #else
             .SetEnvironmentName("production");
 #endif
@@ -115,7 +116,7 @@ public class InAppPurchaseManager : Singleton<InAppPurchaseManager>, IStoreListe
         return null;
     }
     
-    public List<Product> ProductsPurchased()
+    public static List<Product> ProductsPurchased()
     {
         var temp = new List<Product>();
         foreach (var item in _storeController.products.all)
@@ -126,7 +127,7 @@ public class InAppPurchaseManager : Singleton<InAppPurchaseManager>, IStoreListe
         return temp;
     }
 
-    public List<Product> ProductsPurchased(ProductType productType)
+    public static List<Product> ProductsPurchased(ProductType productType)
     {
         var temp = new List<Product>();
         foreach (var item in _storeController.products.all)
@@ -137,7 +138,7 @@ public class InAppPurchaseManager : Singleton<InAppPurchaseManager>, IStoreListe
         return temp;
     }
 
-    public List<Product> ProductsAvailableToPurchase()
+    public static List<Product> ProductsAvailableToPurchase()
     {
         var temp = new List<Product>();
         foreach (var item in _storeController.products.all)
@@ -224,9 +225,15 @@ public class InAppPurchaseManager : Singleton<InAppPurchaseManager>, IStoreListe
         return PurchaseProcessingResult.Complete;
     }
 
+    //Obsolete function
     public void OnPurchaseFailed(Product product, PurchaseFailureReason failureReason)
     {
-        MyDebug($"OnPurchaseFailed: FAIL. Product: {product.definition.storeSpecificId}, PurchaseFailureReason: {failureReason}");
+        MyDebugError($"OnPurchaseFailed: FAIL. Product: {product.definition.storeSpecificId}, PurchaseFailureReason: {failureReason}");
+    }
+    
+    public void OnPurchaseFailed(Product product, PurchaseFailureDescription failureDescription)
+    {
+        MyDebugError($"OnPurchaseFailed: FAIL. Product: {product.definition.storeSpecificId}, PurchaseFailureDescription: {failureDescription}");
     }
     #endregion
 

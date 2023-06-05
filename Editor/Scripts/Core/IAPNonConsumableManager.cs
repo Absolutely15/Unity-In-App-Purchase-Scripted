@@ -9,9 +9,9 @@ public class IAPNonConsumableManager : Singleton<IAPNonConsumableManager>
     #region Properties
     public IAPNonConsumableSaveData iapNonConsumableSaveData;
     
-    [HideInInspector] public UnityEvent<int> onPurchaseComplete = new UnityEvent<int>();
+    [HideInInspector] public UnityEvent<int> onPurchaseComplete;
 
-    [SerializeField] private List<string> nonConsumableProductId = new List<string>();
+    [SerializeField] private List<string> nonConsumableProductId;
 
     private Dictionary<string, UnityAction> nonConsumableDictionary;
     #endregion

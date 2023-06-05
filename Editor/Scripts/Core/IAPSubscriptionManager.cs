@@ -1,15 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Purchasing;
 using UnityEngine.Events;
+using UnityEngine.Purchasing;
 using NVTT.InAppPurchase;
 
 public class IAPSubscriptionManager : Singleton<IAPSubscriptionManager>
 {
     [HideInInspector] public List<bool> subscriptionProductsPurchased;
-    [HideInInspector] public UnityEvent<int> onPurchaseComplete = new UnityEvent<int>();
+    [HideInInspector] public UnityEvent<int> onPurchaseComplete;
     
-    [SerializeField] private List<string> subscriptionProductId = new List<string>();
+    [SerializeField] private List<string> subscriptionProductId;
 
     private Dictionary<string, UnityAction> subscriptionDictionary;
     private List<Product> subscriptionPurchased;
@@ -28,8 +28,8 @@ public class IAPSubscriptionManager : Singleton<IAPSubscriptionManager>
 
     private void Init()
     {
-        subscriptionPurchased = InAppPurchaseManager.Instance.ProductsPurchased(ProductType.Subscription);
-            
+        subscriptionPurchased = InAppPurchaseManager.ProductsPurchased(ProductType.Subscription);
+
         subscriptionDictionary = new Dictionary<string, UnityAction>
         {
             {subscriptionProductId[0], MonthlySubscribe}

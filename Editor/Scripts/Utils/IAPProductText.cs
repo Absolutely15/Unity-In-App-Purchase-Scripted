@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Sirenix.OdinInspector;
+using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Purchasing;
@@ -10,7 +10,7 @@ public class IAPProductText : MonoBehaviour
     #region Properties
 
     [SerializeField] protected ProductType productType;
-    [ValueDropdown("GetProductsID")]
+    [Dropdown("GetProductsID")]
     [SerializeField] protected string productId;
     [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private TextMeshProUGUI descriptionText;

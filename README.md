@@ -1,2 +1,2 @@
 # In-App-Purchase-Scripted
-Required Odin Inspector Package
+Required Naughty Attributes
